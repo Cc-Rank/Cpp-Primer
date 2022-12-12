@@ -12,35 +12,41 @@ using std::out_of_range;
 class StrBlobPtr;
 class StrBlob {
 public:
-    friend class StrBlobPtr;
-    StrBlobPtr begin();
-    StrBlobPtr end();
+	friend class StrBlobPtr;
+	StrBlobPtr begin();
+	StrBlobPtr end();
 
-    StrBlobPtr begin() const;
-    StrBlobPtr end() const;
+	StrBlobPtr begin() const;
+	StrBlobPtr end() const;
 
-    typedef vector<string>::size_type size_type;
-    StrBlob();
-    StrBlob(initializer_list<string> il);
+	typedef vector<string>::size_type size_type;
+	StrBlob() : 
+		data(std::make_shared<vector<string>>()) { }
+	StrBlob(initializer_list <string> il) :
+		data(std::make_shared<vector<string>>(il)) { }
+	StrBlob(const StrBlob& sb) :
+		data(std::make_shared<vector<string>>(*sb.data)) {};
 
-    size_type size() const { return data->size(); }
-    bool empty() const { return data->empty(); }
+	StrBlob& operator=(const StrBlob& sb);
 
-    // 添加和删除元素
-    void push_back(const string& t) { data->push_back(t); }
-    void pop_back();
+	size_type size() const { return data->size(); }
+	bool empty() const { return data->empty(); }
 
-    // 元素访问
-    string& front();
-    const string& front() const;
-    string& back();
-    const string& back() const;
+	// 添加和删除元素
+	void push_back(const string& t) { data->push_back(t); }
+	void pop_back();
 
-    void print();
+	// 元素访问
+	string& front();
+	const string& front() const;
+	string& back();
+	const string& back() const;
+
+	void print();
 
 private:
-    shared_ptr<vector<string>> data;
+	shared_ptr<vector<string>> data;
 
-    // 如果 data[i] 不合法，抛出一个异常
-    void check(size_type i, const string& msg) const;
+	// 如果 data[i] 不合法，抛出一个异常
+	void check(size_type i, const string& msg) const;
 };

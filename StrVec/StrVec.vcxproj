@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{bf050f28-27c8-4a34-957c-7f6ec88740ea}</ProjectGuid>
-    <RootNamespace>StrBlobPtr</RootNamespace>
+    <ProjectGuid>{36d6b0f6-02d9-4f7d-b417-b93a6e16084c}</ProjectGuid>
+    <RootNamespace>StrVec</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -148,15 +148,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\StrBlob.cpp" />
-    <ClCompile Include="src\StrBlobPtr.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\StrBlob.h" />
-    <ClInclude Include="src\StrBlobPtr.h" />
+    <ClInclude Include="src\StrVec.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

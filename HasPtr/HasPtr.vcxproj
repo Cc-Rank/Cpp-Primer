@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{bf050f28-27c8-4a34-957c-7f6ec88740ea}</ProjectGuid>
-    <RootNamespace>StrBlobPtr</RootNamespace>
+    <ProjectGuid>{194da764-0d8d-4d14-a935-d1d12f3742f7}</ProjectGuid>
+    <RootNamespace>HasPtr</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -147,16 +147,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\HasPtr.hpp" />
+  </ItemGroup>
+  <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\StrBlob.cpp" />
-    <ClCompile Include="src\StrBlobPtr.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\StrBlob.h" />
-    <ClInclude Include="src\StrBlobPtr.h" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md" />
+    <Text Include="test.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

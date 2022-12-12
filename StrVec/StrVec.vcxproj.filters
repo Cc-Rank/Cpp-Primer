@@ -18,24 +18,13 @@
     <ClCompile Include="src\main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\StrBlob.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="src\StrBlobPtr.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\StrBlob.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="src\StrBlobPtr.h">
+    <ClInclude Include="src\StrVec.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\README.md">
-      <Filter>资源文件</Filter>
-    </None>
+    <None Include="README.md" />
   </ItemGroup>
 </Project>

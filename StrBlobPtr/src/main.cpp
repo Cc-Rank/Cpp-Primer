@@ -34,7 +34,7 @@ public:
 void test_StrBolb()
 {
 	LOG("----------test_StrBlob----------");
-	std::ifstream ifile("hello.txt");
+	std::ifstream ifile("../README.md");
 	if (!ifile)
 	{
 		cerr << "no file!" << endl;
