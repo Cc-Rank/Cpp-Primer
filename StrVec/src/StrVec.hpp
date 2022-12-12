@@ -16,6 +16,7 @@ public:
 	StrVec() :
 		elements(nullptr), first_free(nullptr), cap(nullptr) { }
 	StrVec(const StrVec&);
+	StrVec(std::initializer_list<string>);
 	StrVec& operator = (const StrVec&);
 	~StrVec();
 
@@ -60,21 +61,31 @@ StrVec::alloc_n_copy(const std::string* b, const std::string* e)
 	return { data, uninitialized_copy(b, e, data) };
 }
 
-
-// 拷贝控制成员
 void StrVec::free()
 {
 	if (elements)
 	{
-		for (auto p = first_free; p != elements; )
-			alloc.destroy(--p);
+		//for (auto p = first_free; p != elements; )
+		//	alloc.destroy(--p);
+		
+		// for_each和lambda实现
+		for_each(begin(), end(), [](string& p) { alloc.destroy(&p); });
+
 		alloc.deallocate(elements, cap - elements);
 	}
 }
 
+// 拷贝控制成员
 StrVec::StrVec(const StrVec& s)
 {
 	auto newdata = alloc_n_copy(s.begin(), s.end());
+	elements = newdata.first;
+	first_free = cap = newdata.second;
+}
+
+StrVec::StrVec(std::initializer_list<string> il)
+{
+	auto newdata = alloc_n_copy(il.begin(), il.end());
 	elements = newdata.first;
 	first_free = cap = newdata.second;
 }

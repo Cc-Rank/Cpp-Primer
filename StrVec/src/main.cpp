@@ -11,12 +11,10 @@ using std::cin; using std::cout; using std::endl;
 
 void test()
 {
-	LOG("----------test----------")
+	LOG("----------test----------");
 
-	StrVec sv;
+	StrVec sv{"hello", "world"};
 
-	sv.push_back("hello");
-	sv.push_back("world");
 
 	for (auto sv_it = sv.begin(); sv_it != sv.end(); ++sv_it)
 	{
