@@ -14,7 +14,12 @@ void test()
 	LOG("----------test----------");
 
 	StrVec sv{"hello", "world"};
-
+	string ss;
+	ss.push_back('s');
+	ss.resize(10);
+	
+	std::for_each(ss.begin(), ss.end(), [](const char p) {cout << p << ","; });
+	LOG("-----------")
 
 	for (auto sv_it = sv.begin(); sv_it != sv.end(); ++sv_it)
 	{
