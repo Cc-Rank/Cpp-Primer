@@ -11,6 +11,9 @@ using std::out_of_range;
 
 class StrBlobPtr;
 class StrBlob {
+	friend bool operator == (const StrBlob&, const StrBlob&);
+	friend bool operator != (const StrBlob&, const StrBlob&);
+	friend bool operator < (const StrBlob&, const StrBlob&);
 public:
 	friend class StrBlobPtr;
 	StrBlobPtr begin();
@@ -34,6 +37,7 @@ public:
 
 	// 添加和删除元素
 	void push_back(const string& t) { data->push_back(t); }
+	void push_back(string&& t) { data->push_back(std::move(t)); }
 	void pop_back();
 
 	// 元素访问

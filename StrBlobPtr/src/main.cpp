@@ -9,8 +9,8 @@
 #include <algorithm>
 #include <set>
 #include <map>
-#include "StrBlob.h"
-#include "StrBlobPtr.h"
+#include "StrBlob.hpp"
+#include "StrBlobPtr.hpp"
 
 using std::cout; using std::cin; using std::endl; using std::cerr;
 using std::string; using std::vector;
@@ -52,9 +52,9 @@ void test_StrBolb()
 		cout << sb_it.deref() << endl;
 
 
-	//const StrBlob csb = { "Hello", "World", "!" };
-	//for (auto sbp_it(csb.begin()), sbp_end(csb.end()); sbp_it != sbp_end; sbp_it.incr())
-	//	cout << sbp_it.deref() << endl;
+	const StrBlob csb = { "Hello", "World", "!" };
+	for (auto sbp_it(csb.begin()), sbp_end(csb.end()); sbp_it != sbp_end; sbp_it.incr())
+		cout << sbp_it.deref() << endl;
 
 }
 static int cnt = 1;
@@ -88,20 +88,40 @@ Point foo_bar(Point arg) // 1
 
 void test()
 {
-	LOG("----------test----------");
+	LOG("----------test_StrBlob----------");
 
 	vector<int> ivec = { 1, 2, 3 ,4 ,5 };
-	vector<string> istr;
+	//vector<string> istr;
 
-	LOG(sizeof(ivec))
-	LOG(sizeof(istr))
+	//LOG(sizeof(ivec))
+	//LOG(sizeof(istr))
+
+	LOG("----- 14.18 -----");
+	//auto ivec_begin = ivec.begin();
+	//auto ivec_end = ivec.end();
+	//vector<int> ivec2(ivec);
+	//ivec2.push_back(1);
+	//auto ivec2_begin = ivec2.begin();
+
+	//cout << (ivec_begin < ivec_end) << endl;
+	//cout << (ivec_begin <= ivec_begin) << endl;
+	////cout << (ivec_begin <= ivec2_begin) << endl;
+	//cout << (ivec > ivec2) << endl;
+
+	StrBlob sb = { "hello", "world" };
+	StrBlob sb_b = { "hello", "worle" };
+	StrBlob sb_s = { "hello", "worlc" };
+	StrBlob sb_e = { "hello", "world", "!" };
+
+	cout << (sb < sb_b) << ", " << (sb < sb_s) << endl;
+	cout << (sb < sb_s) << endl;
 
     cin.get();
 }	
 
 int main()
 {
-	test_StrBolb();
+	//test_StrBolb();
 
     test();
 }

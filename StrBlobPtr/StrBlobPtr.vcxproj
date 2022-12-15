@@ -152,8 +152,8 @@
     <ClCompile Include="src\StrBlobPtr.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\StrBlob.h" />
-    <ClInclude Include="src\StrBlobPtr.h" />
+    <ClInclude Include="src\StrBlob.hpp" />
+    <ClInclude Include="src\StrBlobPtr.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

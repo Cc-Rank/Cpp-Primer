@@ -11,20 +11,32 @@ using std::cin; using std::cout; using std::endl;
 
 void test()
 {
-	LOG("----------test----------");
+	LOG("----------test_StrVec----------");
 
-	StrVec sv{"hello", "world"};
-	string ss;
-	ss.push_back('s');
-	ss.resize(10);
-	
-	std::for_each(ss.begin(), ss.end(), [](const char p) {cout << p << ","; });
-	LOG("-----------")
+	StrVec sv{ "hello", "world" };
 
-	for (auto sv_it = sv.begin(); sv_it != sv.end(); ++sv_it)
-	{
-		cout << *sv_it << endl;
-	}
+	//string s = "this is ";
+
+	//sv.push_back(s);
+	//sv.push_back("C++ Primer");
+
+	//LOG("-----Print Results------");
+	//for (auto sv_it = sv.begin(); sv_it != sv.end(); ++sv_it)
+	//{
+	//	cout << *sv_it << endl;
+	//}
+
+	LOG("----- 14.16 ----- ");
+	StrVec sv_t(sv);
+	StrVec sv_f{ "hello", "world!" };
+
+	cout << (sv_t == sv) << ", " << (sv_f != sv) << endl;
+
+	LOG("----- 14.18 ----- ");
+	StrVec sv_b{ "hello", "worle" };
+
+	cout << (sv < sv_b) << endl;
+
 }
 
 int main() 

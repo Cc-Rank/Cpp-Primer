@@ -24,7 +24,7 @@ void test()
 		while (in_line >> word)
 		{
 			hsvec.emplace_back(word);
-			LOG(hsvec.capacity());
+			//LOG(hsvec.capacity());
 		}
 	}
 

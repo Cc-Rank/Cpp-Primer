@@ -13,16 +13,16 @@ class HasPtr {
 	friend bool operator<(const HasPtr& lhs, const HasPtr& rhs);
 public:
 	HasPtr(const string& s = string("default")) :
-		ps(new string(s)), i(0), use(new std::size_t(1)) {LOG(*ps + " user++");}
+		ps(new string(s)), i(0), use(new std::size_t(1)) {/*LOG(*ps + " user++");*/}
 	HasPtr(const HasPtr& hp) :
 		ps(hp.ps), i(0), use(hp.use) 
 	{
-		LOG(*ps + " user++");
+		// LOG(*ps + " user++");
 		++* use;
 	}
 
-	HasPtr& operator=(const HasPtr&);
-	//HasPtr& operator=(HasPtr);	// swap版本的赋值运算符
+	// HasPtr& operator=(const HasPtr&);
+	HasPtr& operator=(HasPtr);	// swap版本的赋值运算符
 
 	~HasPtr()
 	{
@@ -41,30 +41,30 @@ private:
 	std::size_t* use;
 };
 
-HasPtr&
-HasPtr::operator=(const HasPtr& hp)
+// HasPtr&
+// HasPtr::operator=(const HasPtr& hp)
+// {
+// 	++* hp.use;
+// 	//LOG(*hp.ps + " user++");
+// 	//LOG(*ps + " user--");
+// 	if (--*use == 0)
+// 	{
+// 		//LOG(*ps + " destruction");
+// 		delete ps;
+// 		delete use;
+// 	}
+// 	ps = hp.ps;
+// 	i = hp.i;
+// 	use = hp.use;
+// 	return *this;
+// }
+
+HasPtr& 
+HasPtr::operator=(HasPtr rhs)	// swap版本的赋值运算符
 {
-	++* hp.use;
-	//LOG(*hp.ps + " user++");
-	//LOG(*ps + " user--");
-	if (--*use == 0)
-	{
-		//LOG(*ps + " destruction");
-		delete ps;
-		delete use;
-	}
-	ps = hp.ps;
-	i = hp.i;
-	use = hp.use;
+	swap(*this, rhs);
 	return *this;
 }
-
-//HasPtr& 
-//HasPtr::operator=(HasPtr rhs)	// swap版本的赋值运算符
-//{
-//	swap(*this, rhs);
-//	return *this;
-//}
 
 inline 
 void swap(HasPtr& lhs, HasPtr& rhs)

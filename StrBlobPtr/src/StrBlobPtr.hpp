@@ -1,10 +1,13 @@
 #pragma once
-#include "StrBlob.h"
+#include "StrBlob.hpp"
 
 using std::runtime_error;
 using std::weak_ptr;
 
 class StrBlobPtr {
+    friend bool operator == (const StrBlobPtr&, const StrBlobPtr&);
+    friend bool operator != (const StrBlobPtr&, const StrBlobPtr&);
+    friend bool operator < (const StrBlobPtr&, const StrBlobPtr&);
 public:
     StrBlobPtr() : curr(0) {}
     StrBlobPtr(StrBlob& a, size_t sz = 0) : wptr(a.data), curr(sz) {}
@@ -22,3 +25,4 @@ private:
     weak_ptr<vector<string>> wptr;
     size_t curr;            // 在数组中的当前位置
 };
+

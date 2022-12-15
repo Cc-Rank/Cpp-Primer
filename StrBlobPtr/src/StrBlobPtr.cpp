@@ -1,4 +1,4 @@
-#include "StrBlobPtr.h"
+#include "StrBlobPtr.hpp"
 
 shared_ptr<vector<string>> StrBlobPtr::check(size_t i, const string& msg) const {
     auto ret = wptr.lock(); // vector 还存在吗？
@@ -22,3 +22,18 @@ StrBlobPtr& StrBlobPtr::incr() {
     return *this;
 }
 
+// 友元函数
+bool operator == (const StrBlobPtr& rhs, const StrBlobPtr& lhs)
+{
+    return rhs.curr == lhs.curr;
+}
+
+bool operator != (const StrBlobPtr& lhs, const StrBlobPtr& rhs)
+{
+    return !(lhs == rhs);
+}
+
+bool operator < (const StrBlobPtr& lhs, const StrBlobPtr& rhs)
+{
+    return lhs.curr < rhs.curr;
+}

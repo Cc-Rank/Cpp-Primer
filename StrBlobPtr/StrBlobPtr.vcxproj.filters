@@ -26,10 +26,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\StrBlob.h">
+    <ClInclude Include="src\StrBlob.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\StrBlobPtr.h">
+    <ClInclude Include="src\StrBlobPtr.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

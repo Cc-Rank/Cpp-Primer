@@ -1,5 +1,5 @@
-#include "StrBlob.h"
-#include "StrBlobPtr.h"
+#include "StrBlob.hpp"
+#include "StrBlobPtr.hpp"
 
 StrBlob&
 StrBlob::operator=(const StrBlob& sb)
@@ -63,4 +63,20 @@ StrBlobPtr StrBlob::begin() const {
 StrBlobPtr StrBlob::end() const {
 	auto ret = StrBlobPtr(*this, data->size());
 	return ret;
+}
+
+// ÓÑÔªº¯Êý
+bool operator == (const StrBlob& lhs, const StrBlob& rhs)
+{
+	return *lhs.data == *rhs.data;
+}
+
+bool operator != (const StrBlob& lhs, const StrBlob& rhs)
+{
+	return !(lhs == rhs);
+}
+
+bool operator < (const StrBlob& lhs, const StrBlob& rhs)
+{
+	return *lhs.data < *rhs.data;
 }
