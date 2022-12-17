@@ -37,6 +37,10 @@ void test()
 
 	cout << (sv < sv_b) << endl;
 
+	LOG("----- 14.26 ----- ");
+	sv.reserve(10);
+	cout << sv[0] << ", " << sv[2] << endl;
+
 }
 
 int main() 

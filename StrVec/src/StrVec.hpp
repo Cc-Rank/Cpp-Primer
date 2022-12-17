@@ -21,9 +21,13 @@ public:
 	StrVec(const StrVec&);
 	StrVec(StrVec&&) noexcept;
 	StrVec(std::initializer_list<string>);
+	~StrVec();
+
 	StrVec& operator = (const StrVec&);
 	StrVec& operator = (StrVec&&) noexcept;
-	~StrVec();
+	StrVec& operator = (std::initializer_list<string>);
+	string& operator [] (size_t n) { return elements[n]; }
+	const string& operator [] (size_t n) const { return elements[n]; }
 
 	void push_back(const string&);
 	void push_back(string&&);
@@ -97,6 +101,16 @@ StrVec::operator = (StrVec&& rhs) noexcept
 		cap = rhs.cap;
 		rhs.elements = rhs.first_free = rhs.cap = nullptr;
 	}
+	return *this;
+}
+
+StrVec& 
+StrVec::operator = (std::initializer_list<string> il)
+{
+	auto data = alloc_n_copy(il.begin(), il.end());
+	free();
+	elements = data.first;
+	first_free = cap = data.second;
 	return *this;
 }
 

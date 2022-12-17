@@ -11,6 +11,7 @@
 #include <map>
 #include "StrBlob.hpp"
 #include "StrBlobPtr.hpp"
+#include <functional>
 
 using std::cout; using std::cin; using std::endl; using std::cerr;
 using std::string; using std::vector;
@@ -31,66 +32,37 @@ public:
 	void Hello() {};
 };
 
-void test_StrBolb()
-{
-	LOG("----------test_StrBlob----------");
-	std::ifstream ifile("../README.md");
-	if (!ifile)
-	{
-		cerr << "no file!" << endl;
-		return;
-	}
-
-	StrBlob sb;
-	string line;
-	while (getline(ifile, line))
-	{
-		sb.push_back(line);
-	}
-	//sb.print();
-	for (auto sb_it(sb.begin()); sb_it != sb.end(); sb_it.incr())
-		cout << sb_it.deref() << endl;
-
-
-	const StrBlob csb = { "Hello", "World", "!" };
-	for (auto sbp_it(csb.begin()), sbp_end(csb.end()); sbp_it != sbp_end; sbp_it.incr())
-		cout << sbp_it.deref() << endl;
-
-}
-static int cnt = 1;
-class Point
-{
+class GetInput {
 public:
-	int i = 1;
-	Point() 
+	GetInput(std::istream& i = std::cin) : is(i) {}
+	std::string operator()() const
 	{
-		LOG("Point");
+		std::string str;
+		std::getline(is, str);
+		return is ? str : std::string();
 	}
-	Point(int oi) : i(oi)
-	{
-		LOG("Point_i")
-	}
-	Point(const Point& p) :i(p.i) 
-	{
-		LOG("Copy");
-		LOG(cnt++);
-	}
+
+private:
+	std::istream& is;
 };
 
-Point global;
-Point foo_bar(Point arg) // 1
+void test_others()
 {
-	Point local = arg, * heap = new Point(global); // 2, 3
-	*heap = local;
-	Point pa[4] = { local, *heap }; // 4, 5
-	return *heap; // 6
+    //GetInput getInput;
+    //std::cout << getInput() << std::endl;
+
+	std::plus<int> inAdd;
+	std::negate<int> intNegate;
+
+	int sum = intNegate(inAdd(10, 30));
+	cout << sum << endl;
 }
 
 void test()
 {
 	LOG("----------test_StrBlob----------");
 
-	vector<int> ivec = { 1, 2, 3 ,4 ,5 };
+	vector<string> ivec = { "hello", "world" };
 	//vector<string> istr;
 
 	//LOG(sizeof(ivec))
@@ -116,12 +88,29 @@ void test()
 	cout << (sb < sb_b) << ", " << (sb < sb_s) << endl;
 	cout << (sb < sb_s) << endl;
 
+	LOG("----- 14.26 -----");
+	cout << sb[0] << ", " << sb[1] << endl;
+
+	LOG("----- 14.28 -----"); 
+	vector<string>::iterator ivec_it = ivec.begin();
+	//auto temp_it = 5 + ivec_it;
+	//ivec_it += 5;
+	//cout << *temp_it << endl;
+	//temp_it = ivec_it + 1;
+	//cout << *temp_it << endl;
+	StrBlobPtr sbp(sb);
+	StrBlobPtr sbp_temp = sbp + 1;
+
+	cout << sbp_temp.deref() << endl;
+
+	cout << ivec_it->c_str() << endl;
+
     cin.get();
 }	
 
 int main()
 {
-	//test_StrBolb();
+	test_others();
 
-    test();
+    //test();
 }

@@ -1,11 +1,24 @@
 #include "StrBlob.hpp"
 #include "StrBlobPtr.hpp"
+#include "ConstStrBlobPtr.hpp"
 
 StrBlob&
 StrBlob::operator=(const StrBlob& sb)
 {
 	data = sb.data;
 	return* this;
+}
+
+string& StrBlob::operator [] (size_t n)
+{
+	check(n, "out of range.");
+	return data->at(n);
+}
+
+const string& StrBlob::operator [] (size_t n) const
+{
+	check(n, "out of range.");
+	return data->at(n);
 }
 
 void StrBlob::check(vector<string>::size_type i, const string& msg) const {
@@ -57,11 +70,11 @@ StrBlobPtr StrBlob::end() {
 	return ret;
 }
 
-StrBlobPtr StrBlob::begin() const {
-	return StrBlobPtr(*this);
+ConstStrBlobPtr StrBlob::cbegin() const {
+	return ConstStrBlobPtr(*this);
 }
-StrBlobPtr StrBlob::end() const {
-	auto ret = StrBlobPtr(*this, data->size());
+ConstStrBlobPtr StrBlob::cend() const {
+	auto ret = ConstStrBlobPtr(*this, data->size());
 	return ret;
 }
 

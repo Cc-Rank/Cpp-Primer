@@ -10,17 +10,19 @@ using std::out_of_range;
 
 
 class StrBlobPtr;
+class ConstStrBlobPtr;
 class StrBlob {
 	friend bool operator == (const StrBlob&, const StrBlob&);
 	friend bool operator != (const StrBlob&, const StrBlob&);
 	friend bool operator < (const StrBlob&, const StrBlob&);
 public:
 	friend class StrBlobPtr;
+	friend class ConstStrBlobPtr;
 	StrBlobPtr begin();
 	StrBlobPtr end();
 
-	StrBlobPtr begin() const;
-	StrBlobPtr end() const;
+	ConstStrBlobPtr cbegin() const;
+	ConstStrBlobPtr cend() const;
 
 	typedef vector<string>::size_type size_type;
 	StrBlob() : 
@@ -31,6 +33,8 @@ public:
 		data(std::make_shared<vector<string>>(*sb.data)) {};
 
 	StrBlob& operator=(const StrBlob& sb);
+	string& operator [] (size_t n);
+	const string& operator [] (size_t n) const;
 
 	size_type size() const { return data->size(); }
 	bool empty() const { return data->empty(); }

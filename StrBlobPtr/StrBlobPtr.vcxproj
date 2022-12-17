@@ -147,11 +147,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ConstStrBlobPtr.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\StrBlob.cpp" />
     <ClCompile Include="src\StrBlobPtr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ConstStrBlobPtr.hpp" />
     <ClInclude Include="src\StrBlob.hpp" />
     <ClInclude Include="src\StrBlobPtr.hpp" />
   </ItemGroup>

@@ -23,10 +23,12 @@ public:
 	MyString(const char*);
 	MyString(const MyString&);
 	MyString(MyString&&) noexcept;
+	~MyString();
 	MyString& operator = (const MyString&);
 	MyString& operator = (MyString&&) noexcept;
 	MyString& operator = (const char*);
-	~MyString();
+	char& operator [] (size_t n) { return elements[n]; }
+	const char& operator [] (size_t n) const { return elements[n]; }
 
 	void push_back(const char);
 

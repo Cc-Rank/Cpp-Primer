@@ -16,7 +16,17 @@ public:
     string& deref() const;
     StrBlobPtr& incr();     // 前缀递增
 
-    bool operator !=(const StrBlobPtr& p) { return p.curr != curr; }
+    bool operator!=(const StrBlobPtr& p) { return p.curr != curr; }
+    string& operator[](size_t n);
+    const string& operator[](size_t n) const;
+    StrBlobPtr& operator++();
+    StrBlobPtr& operator--();
+    StrBlobPtr& operator++(int);
+    StrBlobPtr& operator--(int);
+    StrBlobPtr operator+(size_t n);
+    StrBlobPtr operator-(size_t n);
+    string& operator*() const;
+    string* operator->() const;
 private:
     // 若检查成功，check 返回一个指向 vector 的 shared_ptr
     shared_ptr<vector<string>> check(size_t, const string&) const;

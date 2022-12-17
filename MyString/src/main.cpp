@@ -40,6 +40,12 @@ void test()
 	LOG("----- 14.18 ----- ");
 	MyString ss_b("std1");
 	cout << (ss < ss_b) << endl;
+
+	LOG("----- 14.26 ----- ");
+	cout << ss[0] << ", " << ss[4] << endl;
+
+	cout << ss.begin() << endl;
+
 }
 
 int main()

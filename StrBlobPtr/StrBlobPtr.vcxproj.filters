@@ -24,12 +24,18 @@
     <ClCompile Include="src\StrBlobPtr.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\ConstStrBlobPtr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\StrBlob.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\StrBlobPtr.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConstStrBlobPtr.hpp">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
