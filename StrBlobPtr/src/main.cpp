@@ -51,11 +51,20 @@ void test_others()
     //GetInput getInput;
     //std::cout << getInput() << std::endl;
 
-	std::plus<int> inAdd;
-	std::negate<int> intNegate;
+	//std::plus<int> inAdd;
+	//std::negate<int> intNegate;
 
-	int sum = intNegate(inAdd(10, 30));
-	cout << sum << endl;
+	//int sum = intNegate(inAdd(10, 30));
+	//cout << sum << endl;
+
+	//int a = 65;
+	//int* ap = &a;
+	//char* as = reinterpret_cast<char*>(ap);
+	//while (*as)
+	//{
+	//	cout << *as << endl;
+	//	as++;
+	//}
 }
 
 void test()
